@@ -30,7 +30,10 @@ BMP280::BMP280()
 */
 char BMP280::begin(int sdaPin, int sclPin)
 {
-	Wire.begin(sdaPin,sclPin);
+	// cf: https://github.com/mahfuz195/BMP280-Arduino-Library/issues/2
+	// no matching function for call to 'TwoWire::begin(int&, int&)
+	//Wire.begin(sdaPin,sclPin);
+	Wire.begin();
 	return (readCalibration());
 }
 
